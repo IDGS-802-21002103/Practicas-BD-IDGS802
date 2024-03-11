@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% import '_macros.html' as macros %}
+{% block content %}
+<div class="mx-auto col-10 shadow-lg p-4 my-4 border rounded-4">
+    <div class="row text-center">
+        <span class="h1">
+            <kbd>ALUMNOS</kbd>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="/alumnos_form" class="btn btn-success rounded-4">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <caption>TABLA DE ALUMNOS</caption>
+            <thead>
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Email</th>
+                    <th>Registro</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.id }}</td>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.apellidoPaterno }}</td>
+                    <td>{{ alumno.apellidoMaterno }}</td>
+                    <td>{{ alumno.email }}</td>
+                    <td>{{ alumno.fecha_registro }}</td>
+                    <td>
+
+                        <a href="/alumnos_editar?id={{ alumno.id }}" class="btn btn-warning rounded-4">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="/alumnos_eliminar?id={{ alumno.id }}" class="btn btn-danger rounded-4">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}
