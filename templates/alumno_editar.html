@@ -1,0 +1,35 @@
+{% extends "index.html"%}
+{% from '_macros.html' import input_float %}
+{% block content %}
+
+
+<div class="mx-auto col-md-6 shadow-lg p-4 my-4 bg-white">
+    <div class="row text-center">
+        <span class="h1">
+            <kbd>EDITAR</kbd>
+        </span>
+    </div>
+    <form action="/alumnos_editar" id="editar" method="POST" novalidate>
+
+        {{ input_float(form.id, class="form-control disabled") }}
+
+        {{ input_float(form.nombre, class="form-control text-uppercase") }}
+
+        {{ input_float(form.apellidoPaterno, class="form-control text-uppercase") }}
+
+        {{ input_float(form.apellidoMaterno, class="form-control text-uppercase") }}
+
+        {{ input_float(form.email, class="form-control text-lowercase") }}
+
+        <div class="text-center">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="btn btn-success" type="submit" name="editar" value="editar"
+                id="editar">GUARDAR</button>
+            <a href="/alumnos" class="btn btn-warning">CANCELAR</a>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

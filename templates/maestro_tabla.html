@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% import '_macros.html' as macros %}
+{% block content %}
+<div class="mx-auto col-10 shadow-lg p-4 my-4 border rounded-4">
+    <div class="row text-center">
+        <span class="h1">
+            <kbd>MAESTROS</kbd>
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="/maestros_form" class="btn btn-success rounded-4">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <caption>TABLA DE MAESTROS</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Email</th>
+                    <th>Materia</th>
+                    <th>Registro</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for maestro in maestros %}
+                <tr>
+                    <td>{{ maestro.id }}</td>
+                    <td>{{ maestro.nombre }}</td>
+                    <td>{{ maestro.apellidoPaterno }}</td>
+                    <td>{{ maestro.apellidoMaterno }}</td>
+                    <td>{{ maestro.materia }}</td>
+                    <td>{{ maestro.email }}</td>
+                    <td>{{ maestro.fecha_registro}}</td>
+                    <td>
+                        <a href="/maestros_editar?id={{ maestro.id }}" class="btn btn-warning rounded-4 bold">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="/maestros_eliminar?id={{ maestro.id }}" class="btn btn-danger rounded-4 bold">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
